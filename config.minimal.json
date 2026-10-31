@@ -1,0 +1,25 @@
+{
+  "_comment": "最小配置：只接一个上游，改两处即可跑。",
+  "client_keys": {
+    "sk-relay-CHANGE-ME-001": {
+      "name": "local",
+      "allow": "*",
+      "rpm": 60,
+      "daily": 1000
+    }
+  },
+  "upstreams": {
+    "or": {
+      "host": "openrouter.ai",
+      "base": "/api/v1",
+      "key": "REPLACE_WITH_YOUR_UPSTREAM_KEY",
+      "proxy": false,
+      "rpm": 20,
+      "daily": 500,
+      "aliases": {
+        "claude-sonnet": "anthropic/claude-sonnet-5.5",
+        "claude-haiku": "anthropic/claude-haiku-5.5"
+      }
+    }
+  }
+}

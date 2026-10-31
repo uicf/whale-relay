@@ -1,0 +1,2 @@
+# 唯一可选依赖：使用 SOCKS5 代理（config.json 里 proxy=true）时才需要
+PySocks>=1.7.1

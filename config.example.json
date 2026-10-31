@@ -1,0 +1,97 @@
+{
+  "_comment": "whale-relay 配置示例。复制为 config.json 后填入真实密钥；真实 config.json 切勿提交。",
+  "client_keys": {
+    "sk-relay-CHANGE-ME-001": {
+      "name": "local",
+      "allow": "*",
+      "rpm": 60,
+      "daily": 3000
+    }
+  },
+  "upstreams": {
+    "or": {
+      "host": "openrouter.ai",
+      "base": "/api/v1",
+      "key": "REPLACE_WITH_YOUR_UPSTREAM_KEY",
+      "proxy": false,
+      "rpm": 20,
+      "daily": 1000,
+      "aliases": {
+        "or/cheap-gemma": "google/gemma-3-4b-it",
+        "or/cheap-glm": "z-ai/glm-5.3-flash",
+        "or/cheap-glm4.7": "z-ai/glm-4.7-flash",
+        "or/cheap-qwen": "qwen/qwen3.5-flash-02-23",
+        "or/cheap-nex": "nex-agi/nex-n2.5-mini",
+        "or/cheap-nex-pro": "nex-agi/nex-n2.5-pro",
+        "or/claude-haiku-5.5": "anthropic/claude-haiku-5.5",
+        "or/claude-sonnet-5.5": "anthropic/claude-sonnet-5.5",
+        "or/claude-opus-5.5": "anthropic/claude-opus-5.5",
+        "or/claude-fable-5.1": "anthropic/claude-fable-5.1",
+        "or/gemini-2.5-lite": "google/gemini-2.5-flash-lite",
+        "or/gemini-3.1-lite": "google/gemini-3.1-flash-lite",
+        "or/gemini-3-flash": "google/gemini-3-flash-preview",
+        "or/gemini-2.5-pro": "google/gemini-2.5-pro",
+        "or/gemini-3.1-pro": "google/gemini-3.1-pro-preview",
+        "or/deepseek-v4.1": "deepseek/deepseek-v4.1-flash",
+        "cheap-gemma": "google/gemma-3-4b-it",
+        "cheap-glm": "z-ai/glm-5.3-flash",
+        "cheap-glm4.7": "z-ai/glm-4.7-flash",
+        "cheap-qwen": "qwen/qwen3.5-flash-02-23",
+        "cheap-nex": "nex-agi/nex-n2.5-mini",
+        "cheap-nex-pro": "nex-agi/nex-n2.5-pro",
+        "or/free": "openrouter/free"
+      }
+    },
+    "qwen": {
+      "host": "dashscope.aliyuncs.com",
+      "base": "/compatible-mode/v1",
+      "key": "REPLACE_WITH_YOUR_UPSTREAM_KEY",
+      "proxy": false,
+      "rpm": 100,
+      "daily": 20000,
+      "aliases": {
+        "qwen/glm-5.3": "ZHIPU/GLM-5.3",
+        "qwen/glm-5.3-prime": "glm-5.3-prime",
+        "qwen/glm-5.3-flash": "ZHIPU/GLM-5.3-Flash",
+        "qwen/glm-5.3-flashx": "ZHIPU/GLM-5.3-FlashX",
+        "qwen/qwen3.8-max": "qwen3.8-max",
+        "qwen/qwen3.8-flash": "qwen3.8-flash",
+        "qwen/qwen3.6-flash": "qwen3.6-flash",
+        "qwen/kimi-k3": "kimi-k3",
+        "qwen/minimax-m3": "MiniMax/MiniMax-M3",
+        "qwen/mimo-v2.6-pro": "xiaomi/mimo-v2.6-pro-ultraspeed",
+        "qwen/deepseek-v4-pro": "deepseek-v4-pro",
+        "qwen/deepseek-v4.1-flash": "deepseek-v4.1-flash",
+        "nl/grok-4.5": "deepseek-v4.1-flash",
+        "qwen/kimi-k3.1-pro": "kimi/kimi-k3.1-pro",
+        "qwen/kimi-k3.1-pro-fast": "kimi/kimi-k3.1-pro-highspeed",
+        "qwen/step-5": "stepfun/step-5-preview"
+      }
+    },
+    "zhipu": {
+      "host": "open.bigmodel.cn",
+      "base": "/api/paas/v4",
+      "key": "REPLACE_WITH_YOUR_UPSTREAM_KEY",
+      "proxy": false,
+      "rpm": 60,
+      "daily": 10000,
+      "aliases": {
+        "zhipu/glm-4.7": "glm-4.7",
+        "zhipu/glm-4.5-air": "glm-4.5-air"
+      }
+    }
+  },
+  "window": {
+    "enabled": false,
+    "open": "08:30",
+    "close": "23:55",
+    "_comment": "可选。enabled=false 表示全天开放（默认）。想看夜间停服就改成 true"
+  },
+  "limits": {
+    "ip_rpm": 0,
+    "daily_total": 0,
+    "auth_fail_limit": 0,
+    "ban_seconds": 600,
+    "_comment": "全部为 0 = 不限制（默认）。需要防护时填具体数字，见 README"
+  }
+}

@@ -1,0 +1,18 @@
+services:
+  relay:
+    build: .
+    container_name: whale-relay
+    ports:
+      - "8090:8090"
+    volumes:
+      - ./config.json:/app/config.json:ro
+      - ./logs:/app/logs
+    environment:
+      RELAY_PORT: "8090"
+      RELAY_LOG_DIR: "/app/logs"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request;urllib.request.urlopen('http://127.0.0.1:8090/healthz')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
