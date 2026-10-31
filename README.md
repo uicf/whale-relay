@@ -89,6 +89,26 @@ curl http://127.0.0.1:8090/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{"model":"claude-haiku","messages":[{"role":"user","content":"hi"}],"max_tokens":20}'
 ```
+## 客户端接入
+
+下游客户端（Cherry Studio / NextChat / Dify / 任意 OpenAI SDK）只需填两项：
+
+| 项 | 填什么 |
+|---|---|
+| **Base URL** | `http://<relay地址>:8090/v1` |
+| **API Key** | 自己的客户端密钥（`python relay.py key new` 生成） |
+
+`<relay地址>` 按部署位置替换：
+
+| 场景 | Base URL |
+|---|---|
+| 与 relay 同机 | `http://127.0.0.1:8090/v1` |
+| 局域网其他设备 | `http://192.168.x.x:8090/v1`（relay 机器的内网 IP，需放行 8090 端口） |
+| 公网访问 | `https://你的域名/v1`（**必须走 HTTPS 反代**） |
+
+> 默认监听 `0.0.0.0`，所有网卡可达。仅本机使用时建议 `RELAY_HOST=127.0.0.1`。
+
+模型名请先请求 `/v1/models`，按返回列表填写。
 
 ## 端点
 
