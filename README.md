@@ -89,6 +89,7 @@ curl http://127.0.0.1:8090/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{"model":"claude-haiku","messages":[{"role":"user","content":"hi"}],"max_tokens":20}'
 ```
+
 ## 客户端接入
 
 下游客户端（Cherry Studio / NextChat / Dify / 任意 OpenAI SDK）只需填两项：
